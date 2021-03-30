@@ -1,3 +1,10 @@
+python-pyslurm (18.08-1) UNRELEASED; urgency=medium
+
+  * Non-maintainer upload.
+  * Package for debian buster
+
+ -- Pawel T. Jochym <jochym@mercury>  Tue, 30 Mar 2021 21:19:03 +0200
+
 python-pyslurm (2.2.8-1) unstable; urgency=low
 
   * Non-maintainer upload.
