@@ -2,22 +2,16 @@ sudo: required
 language: python
 branches:
   only:
-    - master
+    - 18.08.0.1
 env:
   matrix:
-    - SLURM=19.05.0 CYTHON=0.29.14 PYTHON=3.6
-    - SLURM=19.05.0 CYTHON=0.29.14 PYTHON=3.5
-    - SLURM=19.05.0 CYTHON=0.29.14 PYTHON=3.4
-    - SLURM=19.05.0 CYTHON=0.29.14 PYTHON=2.7
-    - SLURM=19.05.0 CYTHON=0.19.2 PYTHON=3.6
-    - SLURM=19.05.0 CYTHON=0.19.2 PYTHON=3.5
-    - SLURM=19.05.0 CYTHON=0.19.2 PYTHON=3.4
-    - SLURM=19.05.0 CYTHON=0.19.2 PYTHON=2.7
+    - SLURM=18.08 CYTHON=0.29.14 PYTHON=3.6
+    - SLURM=18.08 CYTHON=0.29.14 PYTHON=2.7
 services:
   - docker
 before_install:
-  - docker pull giovtorres/docker-centos7-slurm:$SLURM
-  - docker run -d -it -h ernie --name slurm-$SLURM -v $PWD:/pyslurm giovtorres/docker-centos7-slurm:$SLURM
+  - docker pull jochym/docker-buster-slurm
+  - docker run -d -it -h ernie --name slurm-$SLURM -v $PWD:/pyslurm jochym/docker-buster-slurm
 install: true
 before_script:
   - docker exec -e PYTHON=$PYTHON -e CYTHON=$CYTHON slurm-$SLURM /pyslurm/scripts/build.sh
